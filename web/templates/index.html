@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>동시가위바위보</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header>
+    <h1>동시가위바위보</h1>
+    <nav>
+      <button class="tab-btn active" data-tab="play">🎮 게임 플레이</button>
+      <button class="tab-btn" data-tab="submit">💻 코드 제출</button>
+    </nav>
+  </header>
+
+  <!-- PLAY TAB -->
+  <div id="tab-play" class="tab-content active">
+    <!-- Start screen overlay -->
+    <div id="start-overlay">
+      <div id="start-panel">
+        <h2>플레이어 설정</h2>
+        <div id="type-toggles">
+          <!-- Rendered by JS -->
+        </div>
+        <button id="btn-start-game">▶ 게임 시작</button>
+      </div>
+    </div>
+
+    <!-- Game layout -->
+    <div id="game-layout">
+      <canvas id="game-canvas" width="900" height="780"></canvas>
+      <div id="info-panel">
+        <div id="turn-display">Turn 0</div>
+        <div id="scores"></div>
+        <hr>
+        <div id="phase-display"></div>
+        <div id="action-buttons" style="display:none">
+          <div id="progress-display"></div>
+          <button id="btn-confirm">✔ 턴 확인</button>
+        </div>
+        <div id="game-over-panel" style="display:none">
+          <div id="winner-display"></div>
+          <button id="btn-restart">🔄 재시작</button>
+        </div>
+        <div id="hints">
+          <p>• 기물 클릭 → 선택</p>
+          <p>• 파란 셀 클릭 → 이동 (2칸)</p>
+          <p>• 초록 셀 클릭 → 복제 (1칸)</p>
+          <p>• Enter: 턴 확인</p>
+          <p>• Esc: 선택 취소</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUBMIT TAB -->
+  <div id="tab-submit" class="tab-content">
+    <div id="submit-layout">
+      <div id="editor-panel">
+        <div id="editor-header">
+          <h3>에이전트 코드 제출</h3>
+          <div id="lang-select">
+            <label><input type="radio" name="language" value="cpp" checked> C++</label>
+            <label><input type="radio" name="language" value="python"> Python</label>
+          </div>
+        </div>
+        <textarea id="code-editor" spellcheck="false" placeholder="// C++ 에이전트 코드를 입력하세요&#10;// #include &quot;agent.h&quot; 사용 가능&#10;&#10;int main() {&#10;    ...&#10;}"></textarea>
+        <button id="btn-submit-code">▶ 제출 및 시뮬레이션 실행</button>
+      </div>
+      <div id="result-panel">
+        <div id="compile-output" style="display:none"></div>
+        <div id="match-result" style="display:none"></div>
+        <div id="replay-controls" style="display:none">
+          <div id="replay-header">
+            <span id="replay-turn-display">Turn 0</span>
+            <div id="replay-btns">
+              <button id="rb-prev">◀</button>
+              <button id="rb-play">▶</button>
+              <button id="rb-next">▶</button>
+            </div>
+            <select id="replay-speed">
+              <option value="4000">0.25x</option>
+              <option value="2000">0.5x</option>
+              <option value="1000" selected>1x</option>
+              <option value="500">2x</option>
+              <option value="250">4x</option>
+            </select>
+          </div>
+          <input type="range" id="replay-slider" min="0" value="0">
+          <canvas id="replay-canvas" width="900" height="780"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/game.js"></script>
+  <script src="/static/submit.js"></script>
+</body>
+</html>
