@@ -1,2 +1,6 @@
 /.omc
 /.venv
+Agents.md
+*/__pycache__
+/simulator/__pycache__/
+/simulator/engine/__pycache__/
